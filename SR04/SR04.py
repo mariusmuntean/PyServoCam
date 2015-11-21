@@ -11,7 +11,7 @@ class SR04:
         self.initHardware()
 
     def initHardware(self):
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
 
         GPIO.setup(self.trigPin, GPIO.OUT)
         GPIO.setup(self.echoPin, GPIO.IN)

@@ -2,7 +2,7 @@
 
 from SR04 import SR04
 
-sensor = SR04(23, 24)
+sensor = SR04(33, 35)
 
 dist = sensor.getDistanceCM()
 
