@@ -1,15 +1,16 @@
+# -*- coding: utf-8 -*-
 from Adafruit_PWM_Servo_Driver import PWM
 
 
 class PanTiltDriver:
-    def __init__(self, customaddress=0x40, panchannel=0, tiltchannel=3):
+    def __init__(self, customaddress=0x40, panchannel=0, tiltchannel=2):
         self.Address = customaddress
         self.PanChannel = panchannel
         self.TiltChannel = tiltchannel
         self.PanMin = 104
         self.PanMax = 560
-        self.TiltMin = 0
-        self.TiltMax = 0
+        self.TiltMin = 104
+        self.TiltMax = 280
         self.PWM = PWM(self.Address)
         self.PWM.setPWMFreq(50)
 
@@ -24,6 +25,10 @@ class PanTiltDriver:
         self.PWM.setPWM(self.PanChannel, 0, int(panTicks))
 
     def tiltTo(self, degrees):
+        """
+        Tilts to a specified angle. Not less then 0° and no more than 90.0°
+        :param degrees: The amount to tilt, expressed in degrees
+        """
         if degrees < 0:
             degrees = 0
         if degrees > 90:
@@ -31,7 +36,7 @@ class PanTiltDriver:
 
         ratio = degrees / float(90)
         tiltTicks = self.TiltMin + (ratio * (self.TiltMax - self.TiltMin))
-        self.PWM.setPWM(self.PanChannel, 0, int(tiltTicks))
+        self.PWM.setPWM(self.TiltChannel, 0, int(tiltTicks))
 
     def panLeft(self):
         """Pan completely to the left"""

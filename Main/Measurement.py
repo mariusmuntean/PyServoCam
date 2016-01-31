@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 
 class Measurement(object):
@@ -7,11 +6,3 @@ class Measurement(object):
         self.tiltAngle = tiltAngle
         self.distanceCm = distanceCm
         self.imagePath = imageName
-
-    def __json__(self):
-        return dict(
-            panAngle=self.panAngle,
-            tiltAngle=self.tiltAngle,
-            distanceCm=self.distanceCm,
-            imagePath=self.imagePath
-        )

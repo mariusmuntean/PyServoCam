@@ -19,14 +19,18 @@ panTilt = PanTiltDriver()
 
 
 currentAngle = 0.0
-endAngle = 180.0
+endAngle = 45.0
 
-panTilt.panTo(currentAngle)
+panTilt.tiltTo(0.0)
+panTilt.panCenter()
 time.sleep(1)
 
+
 while currentAngle < endAngle:
-    currentAngle += 15.0
-    panTilt.panTo(currentAngle)
-    time.sleep(0.5)
+    currentAngle += 1.0
+    panTilt.tiltTo(currentAngle)
+    time.sleep(0.1)
 
 panTilt.panCenter()
+panTilt.tiltUp()
+time.sleep(0.5)
