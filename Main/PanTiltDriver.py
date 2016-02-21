@@ -10,7 +10,7 @@ class PanTiltDriver:
         self.PanMin = 104
         self.PanMax = 560
         self.TiltMin = 104
-        self.TiltMax = 280
+        self.TiltMax = 307
         self.PWM = PWM(self.Address)
         self.PWM.setPWMFreq(50)
 
@@ -56,4 +56,4 @@ class PanTiltDriver:
 
     def tiltUp(self):
         """Tilt to horizontal position"""
-        self.tiltTo(0)
+        self.tiltTo(0.0)
