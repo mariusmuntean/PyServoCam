@@ -3,8 +3,6 @@
 from PanTiltDriver import PanTiltDriver
 import time
 
-
-
 panTilt = PanTiltDriver()
 
 # while (True):
@@ -25,11 +23,10 @@ panTilt.tiltTo(0.0)
 panTilt.panCenter()
 time.sleep(1)
 
-
 while currentAngle < endAngle:
-    currentAngle += 1.0
+    currentAngle += 5.0
     panTilt.tiltTo(currentAngle)
-    time.sleep(0.1)
+    time.sleep(0.2)
 
 panTilt.panCenter()
 panTilt.tiltUp()

@@ -5,7 +5,7 @@ import time
 
 import picamera
 
-import ParseConfig
+from ParseConfig import ParseConfig
 from Measurement import Measurement
 from PanTiltDriver import PanTiltDriver
 from SR04 import SR04
@@ -32,8 +32,8 @@ panTilt = PanTiltDriver()
 piCam = picamera.PiCamera()
 
 # Init some params
-panStepSize = 30.0  # In Degrees
-tiltStepSize = 15.0  # In Degrees
+panStepSize = 10.0  # In Degrees
+tiltStepSize = 5.0  # In Degrees
 panStepDuration = 0.5  # In seconds
 tiltStepDuration = 0.5  # In seconds
 currentPanAngle = 0.0
@@ -80,7 +80,8 @@ finally:
 # Persist the measurements to Parse, yay!
 
 # Init Parse
-register(ParseConfig.ApplicationId, ParseConfig.RestApiKey)
+parseConfig = ParseConfig()
+register(parseConfig.ApplicationId, parseConfig.RestApiKey)
 
 # Save all images to Parse
 files = []
